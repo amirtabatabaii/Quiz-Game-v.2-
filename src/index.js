@@ -17,6 +17,7 @@ const initialState = {
   question: "",
   correct_answer: "",
   incorrect_answers: [],
+  all_answers: [],
   index: 0
 };
 

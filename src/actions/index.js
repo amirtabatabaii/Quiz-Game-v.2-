@@ -36,7 +36,7 @@ export function fetchdata(data, index) {
 }
 
 //-------------------------------------
-//
+// NEXT_QUESTION in Home Component
 //-------------------------------------
 export function nextquestion(data, index) {
   return {
@@ -48,5 +48,28 @@ export function nextquestion(data, index) {
     question: data[1].question,
     correct_answer: data[index].correct_answer,
     incorrect_answers: data[index].incorrect_answers
+  };
+}
+
+//-------------------------------------
+// RANDOM_ANSWER in Home Component
+//-------------------------------------
+function createAnswers(correct, incorrect, all_answers) {
+  all_answers = incorrect.concat(correct);
+
+  let i = all_answers.length - 1;
+  for (; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = all_answers[i];
+    all_answers[i] = all_answers[j];
+    all_answers[j] = temp;
+  }
+  return all_answers;
+}
+
+export function randomanswer(correct, incorrect, all_answers) {
+  return {
+    type: "RANDOM_ANSWER",
+    all_answers: createAnswers(correct, incorrect, all_answers)
   };
 }

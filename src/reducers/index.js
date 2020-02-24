@@ -31,14 +31,12 @@ const mainReducer = (state, action) => {
       incorrect_answers: action.data[action.index].incorrect_answers
     };
   }
-
-  // if (action.type === "NEXT++") {
-  //   return {
-  //     ...state,
-  //     index: action.index
-  //   };
-  // }
-  else {
+  if (action.type === "RANDOM_ANSWER") {
+    return {
+      ...state,
+      all_answers: action.all_answers
+    };
+  } else {
     return {
       ...state
     };
