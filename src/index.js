@@ -18,7 +18,8 @@ const initialState = {
   correct_answer: "",
   incorrect_answers: [],
   all_answers: [],
-  index: 0
+  index: 0,
+  score: 0
 };
 
 const middleware = [thunk];

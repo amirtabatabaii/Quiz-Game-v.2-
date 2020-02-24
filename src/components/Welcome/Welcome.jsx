@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../actions/index";
 
 import Cards from "./Cards";
-
+import mainImage from "../../img/main.jpg";
 import "antd/dist/antd.css";
 
 const styles = {
@@ -87,53 +87,61 @@ class Welcome extends Component {
     return (
       <React.Fragment>
         <StyleRoot>
-          <section className='container py-5 my-5' style={styles.bounce}>
-            <Card className='text-center'>
-              <Card.Header className='bg-info h3 font-weight-bold text-white'>
-                QUIZ GAME
-              </Card.Header>
-              <Card.Body>
-                <CardDeck>
-                  <Cards
-                    border='success'
-                    bg=''
-                    headerStyle='bg-success font-weight-bold h5'
-                    header='Difficulty Selection'
-                    title='Select Quiz Difficulty'
-                    body={this.Difficulty}
-                  />
+          <div
+            className='site-blocks-cover overlay'
+            style={{ backgroundImage: `url(${mainImage})` }}>
+            <div className='container'>
+              <div
+                className='row align-items-center justify-content-center'
+                style={styles.bounce}>
+                <Card className='text-center'>
+                  <Card.Header className='bg-info h3 font-weight-bold text-white'>
+                    QUIZ GAME
+                  </Card.Header>
+                  <Card.Body>
+                    <CardDeck>
+                      <Cards
+                        border='success'
+                        bg=''
+                        headerStyle='bg-success font-weight-bold h5'
+                        header='Difficulty Selection'
+                        title='Select Quiz Difficulty'
+                        body={this.Difficulty}
+                      />
 
-                  <Cards
-                    border='primary'
-                    bg=''
-                    headerStyle='bg-primary font-weight-bold h5'
-                    header='Category Options'
-                    title='Select Quiz Category'
-                    body={this.Category}
-                  />
+                      <Cards
+                        border='primary'
+                        bg=''
+                        headerStyle='bg-primary font-weight-bold h5'
+                        header='Category Options'
+                        title='Select Quiz Category'
+                        body={this.Category}
+                      />
 
-                  <Cards
-                    border='warning'
-                    bg=''
-                    headerStyle='bg-warning font-weight-bold h5'
-                    header='About'
-                    title='QUIZ GAME'
-                    body={this.About}
-                  />
-                </CardDeck>
-              </Card.Body>
-              <Card.Footer>
-                <Link to='/home'>
-                  <Button
-                    type='button'
-                    onClick={this.handleClick}
-                    variant='info btn-lg'>
-                    START
-                  </Button>
-                </Link>
-              </Card.Footer>
-            </Card>
-          </section>
+                      <Cards
+                        border='warning'
+                        bg=''
+                        headerStyle='bg-warning font-weight-bold h5'
+                        header='About'
+                        title='QUIZ GAME'
+                        body={this.About}
+                      />
+                    </CardDeck>
+                  </Card.Body>
+                  <Card.Footer>
+                    <Link to='/home'>
+                      <Button
+                        type='button'
+                        onClick={this.handleClick}
+                        variant='info btn-lg'>
+                        START
+                      </Button>
+                    </Link>
+                  </Card.Footer>
+                </Card>
+              </div>
+            </div>
+          </div>
         </StyleRoot>
       </React.Fragment>
     );
