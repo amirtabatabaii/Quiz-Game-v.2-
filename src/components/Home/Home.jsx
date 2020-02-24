@@ -49,6 +49,15 @@ class Home extends Component {
     );
   };
 
+  showTextWithSpecialCharacters(text) {
+    const parser = new DOMParser();
+    const decodedString = parser.parseFromString(
+      `<!doctype html><body>${text}`,
+      "text/html"
+    ).body.textContent;
+    return decodedString;
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -61,19 +70,19 @@ class Home extends Component {
               Difficulty:
               {this.state.difficulty}
               <br /> Question:
-              {this.state.question}
+              {this.showTextWithSpecialCharacters(this.state.question)}
               <br />
               Correct Answer:
-              {this.state.correct_answer}
+              {this.showTextWithSpecialCharacters(this.state.correct_answer)}
               <br />
               Incorrect Answer:
               {this.state.incorrect_answers.map(incorrect => (
-                <p>{incorrect} </p>
+                <p>{this.showTextWithSpecialCharacters(incorrect)} </p>
               ))}
               <br />
               All Answers:
               {this.state.all_answers.map(answer => (
-                <p>{answer} </p>
+                <p>{this.showTextWithSpecialCharacters(answer)} </p>
               ))}
             </div>
           ) : (

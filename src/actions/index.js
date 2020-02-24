@@ -45,7 +45,7 @@ export function nextquestion(data, index) {
     index: index + 1,
     category: data[index].category,
     difficulty: data[index].difficulty,
-    question: data[1].question,
+    question: data[index].question,
     correct_answer: data[index].correct_answer,
     incorrect_answers: data[index].incorrect_answers
   };
