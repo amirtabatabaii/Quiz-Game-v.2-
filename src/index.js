@@ -12,12 +12,12 @@ import Reducer from "./reducers/index.js";
 const initialState = {
   user_API: "",
   data: [],
-  data_category: "",
-  data_difficulty: "",
-  data_question: "",
-  data_correct_answer: "",
-  data_incorrect_answers: [],
-  data_index: 1
+  category: "",
+  difficulty: "",
+  question: "",
+  correct_answer: "",
+  incorrect_answers: [],
+  index: 0
 };
 
 const middleware = [thunk];

@@ -8,47 +8,64 @@ class Home extends Component {
     super(props);
     this.state = {
       data: [],
-      data_category: "",
-      data_difficulty: "",
-      data_question: "",
-      data_correct_answer: "",
-      data_incorrect_answers: [],
-      data_index: ""
+      category: "",
+      difficulty: "",
+      question: "",
+      correct_answer: "",
+      incorrect_answers: [],
+      index: 0
     };
   }
 
   componentDidMount() {
-    this.props.loadData(this.props.user_API, this.props.data_index);
+    this.props.loadData(this.props.user_API, this.props.index);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.data) {
-      console.log(nextProps.data);
       this.setState({
         data: nextProps.data,
-        // data_category: nextProps.data[nextProps.data_index].category,
-        // data_difficulty: nextProps.data[nextProps.data_index].difficulty,
-        data_question: nextProps.data[this.props.data_index].question,
-        // data_correct_answer:
-        //   nextProps.data[nextProps.data_index].correct_answer,
-        // data_incorrect_answers:
-        //   nextProps.data[nextProps.data_index].incorrect_answers,
-        data_index: nextProps.data_index
+        category: nextProps.data[nextProps.index].category,
+        difficulty: nextProps.data[nextProps.index].difficulty,
+        question: nextProps.data[nextProps.index].question,
+        correct_answer: nextProps.data[nextProps.index].correct_answer,
+        incorrect_answers: nextProps.data[nextProps.index].incorrect_answers,
+        index: nextProps.index
       });
     }
   }
 
   handleClick = () => {
-    this.props.nextquestion(this.props.data, this.props.data_index);
+    this.props.nextquestion(this.state.data, this.state.index);
   };
 
   render() {
     return (
       <React.Fragment>
-        <p>ss : {this.state.data_question}</p>
-        <button onClick={this.handleClick}>
-          {this.props.data_index} ssssssss
-        </button>
+        <p>
+          Data {this.state.index + 1} :
+          {this.state.data.length > 0 ? (
+            <div>
+              Category: {this.state.category}
+              <br />
+              Difficulty:
+              {this.state.difficulty}
+              <br /> Question:
+              {this.state.question}
+              <br />
+              Correct Answer:
+              {this.state.correct_answer}
+              <br />
+              Incorrect Answer:
+              {this.state.incorrect_answers.map(incorrect_answer => (
+                <span>{incorrect_answer} </span>
+              ))}
+            </div>
+          ) : (
+            " --"
+          )}
+        </p>
+        <button onClick={this.handleClick}>Next</button>
       </React.Fragment>
     );
   }

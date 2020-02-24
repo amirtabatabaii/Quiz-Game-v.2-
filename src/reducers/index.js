@@ -3,7 +3,7 @@ const mainReducer = (state, action) => {
     return {
       ...state,
       user_API: action.user_API,
-      data_index: action.data_index
+      index: action.index
     };
   }
 
@@ -11,26 +11,34 @@ const mainReducer = (state, action) => {
     return {
       ...state,
       data: action.data,
-      data_index: action.data_index - 1
-      // data_category: action.data[0].category,
-      // data_difficulty: action.data[0].difficulty,
-      // data_question: action.data[0].question,
-      // data_correct_answer: action.data[0].correct_answer,
-      // data_incorrect_answers: action.data[0].incorrect_answers
+      index: action.index,
+      category: action.data[0].category,
+      difficulty: action.data[0].difficulty,
+      question: action.data[0].question,
+      correct_answer: action.data[0].correct_answer,
+      incorrect_answers: action.data[0].incorrect_answers
     };
   }
 
   if (action.type === "NEXT_QUESTION") {
     return {
       ...state,
-      data_index: action.data_index
-      // data_category: action.data[1].category,
-      // data_difficulty: action.data[1].difficulty,
-      //      data_question: action.data[action.data_index].question
-      // data_correct_answer: action.data[1].correct_answer,
-      // data_incorrect_answers: action.data[1].incorrect_answers
+      index: action.index,
+      category: action.data[action.index].category,
+      difficulty: action.data[action.index].difficulty,
+      question: action.data[action.index].question,
+      correct_answer: action.data[action.index].correct_answer,
+      incorrect_answers: action.data[action.index].incorrect_answers
     };
-  } else {
+  }
+
+  // if (action.type === "NEXT++") {
+  //   return {
+  //     ...state,
+  //     index: action.index
+  //   };
+  // }
+  else {
     return {
       ...state
     };

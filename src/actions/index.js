@@ -7,7 +7,7 @@ export function fetchApi(API, index) {
   return {
     type: "CREATE_API_LINK",
     user_API: API,
-    data_index: index
+    index: index
   };
 }
 
@@ -26,12 +26,12 @@ export function fetchdata(data, index) {
   return {
     type: "LOAD_DATA",
     data: data,
-    data_category: data[index - 1].category,
-    data_difficulty: data[index - 1].difficulty,
-    data_question: data[index - 1].question,
-    data_correct_answer: data[index - 1].correct_answer,
-    data_incorrect_answers: data[index - 1].incorrect_answers,
-    data_index: index
+    category: data[index].category,
+    difficulty: data[index].difficulty,
+    question: data[index].question,
+    correct_answer: data[index].correct_answer,
+    incorrect_answers: data[index].incorrect_answers,
+    index: index
   };
 }
 
@@ -41,12 +41,12 @@ export function fetchdata(data, index) {
 export function nextquestion(data, index) {
   return {
     type: "NEXT_QUESTION",
-    //data: data,
-    data_index: index + 1,
-    // data_category: data[index].category,
-    // data_difficulty: data[index].difficulty,
-    data_question: data[index + 1].question
-    // data_correct_answer: data[index].correct_answer,
-    // data_incorrect_answers: data[index].incorrect_answers
+    data: data,
+    index: index + 1,
+    category: data[index].category,
+    difficulty: data[index].difficulty,
+    question: data[1].question,
+    correct_answer: data[index].correct_answer,
+    incorrect_answers: data[index].incorrect_answers
   };
 }

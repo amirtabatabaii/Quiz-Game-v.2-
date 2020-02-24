@@ -26,7 +26,7 @@ class Welcome extends Component {
       user_category: "",
       user_difficulty: "",
       user_API: "",
-      data_index: 1
+      index: 0
     };
   }
 
@@ -64,7 +64,7 @@ class Welcome extends Component {
         If your answer is True you give 100 point, and If your answer is False
         the game is end!
       </p>
-      <strong>Enjoy The Game"</strong>
+      <strong>Enjoy The Game...</strong>
     </div>
   );
 
@@ -79,7 +79,7 @@ class Welcome extends Component {
       }&difficulty=${
         user_difficulty.length > 0 ? user_difficulty : "medium"
       }&type=multiple`,
-      this.state.data_index
+      this.state.index
     );
   };
 
