@@ -1,4 +1,4 @@
-Blocks .site-blocks-cover {
+.site-blocks-cover {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -19,6 +19,12 @@ Blocks .site-blocks-cover {
   min-height: 600px;
   height: calc(100vh);
   background-size: 100% 100%;
+}
+
+.radio-style {
+  display: block;
+  height: 30px;
+  line-height: 30px;
 }
 
 /* .App {

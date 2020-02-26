@@ -2,14 +2,6 @@ import React, { Component } from "react";
 import { Radio } from "antd";
 import { Spinner } from "react-bootstrap";
 
-const styles = {
-  radioStyle: {
-    display: "block",
-    height: "30px",
-    lineHeight: "30px"
-  }
-};
-
 class AnswerOptions extends Component {
   showTextWithSpecialCharacters(text) {
     const parser = new DOMParser();
@@ -20,15 +12,23 @@ class AnswerOptions extends Component {
     return decodedString;
   }
 
+  // radioOnChange(e) {
+  //   console.log("radio checked==>", e.target.value);
+  // }
+
   render() {
     return (
       <div>
         {this.props.dataLength > 0 ? (
-          <Radio.Group onChange={this.props.radioOnChange}>
+          <Radio.Group
+            onChange={e => this.props.radioOnChange}
+            defaultValue={this.props.all_answers[0]}>
             {this.props.all_answers.map((answer, index) => (
-              <Radio key={index} style={styles.radioStyle} value={answer}>
-                {this.showTextWithSpecialCharacters(answer)}
-              </Radio>
+              <div className='text-left radio-style h4' key={index}>
+                <Radio value={answer}>
+                  {this.showTextWithSpecialCharacters(answer)}
+                </Radio>
+              </div>
             ))}
           </Radio.Group>
         ) : (

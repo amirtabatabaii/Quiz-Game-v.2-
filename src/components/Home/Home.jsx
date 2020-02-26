@@ -94,17 +94,6 @@ class Home extends Component {
                     onChange={this.radioOnChange}
                     all_answers={this.state.all_answers}
                   />
-                  {/* 
-                  <Radio.Group onChange={this.radioOnChange}>
-                    {this.state.all_answers.map((answer, index) => (
-                      <Radio
-                        key={index}
-                        //style={styles.radioStyle}
-                        value={answer}>
-                        {this.showTextWithSpecialCharacters(answer)}
-                      </Radio>
-                    ))}
-                  </Radio.Group> */}
                 </Card.Body>
                 <Card.Footer>
                   <button onClick={this.handleClick}>Next</button>
