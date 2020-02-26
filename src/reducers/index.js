@@ -16,7 +16,8 @@ const mainReducer = (state, action) => {
       difficulty: action.data[0].difficulty,
       question: action.data[0].question,
       correct_answer: action.data[0].correct_answer,
-      incorrect_answers: action.data[0].incorrect_answers
+      incorrect_answers: action.data[0].incorrect_answers,
+      all_answers: action.all_answers
     };
   }
 
@@ -28,7 +29,8 @@ const mainReducer = (state, action) => {
       difficulty: action.data[action.index].difficulty,
       question: action.data[action.index].question,
       correct_answer: action.data[action.index].correct_answer,
-      incorrect_answers: action.data[action.index].incorrect_answers
+      incorrect_answers: action.data[action.index].incorrect_answers,
+      all_answers: action.all_answers
     };
   }
   if (action.type === "RANDOM_ANSWER") {

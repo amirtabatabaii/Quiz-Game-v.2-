@@ -1,5 +1,4 @@
-/* Blocks */
-.site-blocks-cover {
+Blocks .site-blocks-cover {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -22,8 +21,6 @@
   background-size: 100% 100%;
 }
 
-@media screen and (min-width: 600px) and (max-width: 1024px) {
-}
 /* .App {
   text-align: center;
 }

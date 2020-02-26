@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Badge from "./Badge";
 
-export class Badges extends Component {
+class Badges extends Component {
   render() {
     return (
       <div>

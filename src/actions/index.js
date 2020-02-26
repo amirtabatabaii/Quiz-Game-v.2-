@@ -31,7 +31,12 @@ export function fetchdata(data, index) {
     question: data[index].question,
     correct_answer: data[index].correct_answer,
     incorrect_answers: data[index].incorrect_answers,
-    index: index
+    index: index,
+    all_answers: createAnswers(
+      data[index].correct_answer,
+      data[index].incorrect_answers,
+      []
+    )
   };
 }
 
@@ -47,14 +52,19 @@ export function nextquestion(data, index) {
     difficulty: data[index].difficulty,
     question: data[index].question,
     correct_answer: data[index].correct_answer,
-    incorrect_answers: data[index].incorrect_answers
+    incorrect_answers: data[index].incorrect_answers,
+    all_answers: createAnswers(
+      data[index + 1].correct_answer,
+      data[index + 1].incorrect_answers,
+      data[index + 1].all_answers
+    )
   };
 }
 
 //-------------------------------------
-// RANDOM_ANSWER in Home Component
+// RANDOM_ANSWER in Action and Reducer
 //-------------------------------------
-function createAnswers(correct, incorrect, all_answers) {
+export function createAnswers(correct, incorrect, all_answers) {
   all_answers = incorrect.concat(correct);
 
   let i = all_answers.length - 1;
@@ -73,3 +83,7 @@ export function randomanswer(correct, incorrect, all_answers) {
     all_answers: createAnswers(correct, incorrect, all_answers)
   };
 }
+
+//-------------------------------------
+//
+//-------------------------------------

@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import QuizDetails from "./QuizDetails";
+import Question from "./Question";
+
 import { connect } from "react-redux";
 import * as actionCreators from "../../actions/index";
 import mainImage from "../../img/main.jpg";
 import { Card } from "react-bootstrap";
-import { Button, Radio } from "antd";
 import "antd/dist/antd.css";
+import AnswerOptions from "./AnswerOptions";
 
-const styles = {
-  radioStylet: {
-    display: "block",
-    height: "30px",
-    lineHeight: "30px"
-  }
-};
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +40,11 @@ class Home extends Component {
         incorrect_answers: nextProps.data[nextProps.index].incorrect_answers,
         index: nextProps.index,
         all_answers: nextProps.all_answers,
+        // nextProps.randomanswer(
+        //   this.state.correct_answer,
+        //   this.state.incorrect_answers,
+        //   this.state.all_answers
+        // ),
         score: nextProps.score
       });
     }
@@ -52,14 +52,6 @@ class Home extends Component {
 
   handleClick = () => {
     this.props.nextquestion(this.state.data, this.state.index);
-  };
-
-  handleAnswers = () => {
-    this.props.randomanswer(
-      this.state.correct_answer,
-      this.state.incorrect_answers,
-      this.state.all_answers
-    );
   };
 
   showTextWithSpecialCharacters(text) {
@@ -70,6 +62,10 @@ class Home extends Component {
     ).body.textContent;
     return decodedString;
   }
+
+  radioOnChange = e => {
+    console.log("radio checked==>", e.target.value);
+  };
 
   render() {
     return (
@@ -88,23 +84,27 @@ class Home extends Component {
                   score={this.state.score}
                 />
                 <Card.Body>
-                  {this.showTextWithSpecialCharacters(this.state.question)}
-                  <Radio.Group
-                    onChange={this.onChange}
-                    value={this.state.value}>
-                    <Radio style={styles.radioStyle} value={1}>
-                      Option A
-                    </Radio>
-                    <Radio style={styles.radioStyle} value={2}>
-                      Option B
-                    </Radio>
-                    <Radio style={styles.radioStyle} value={3}>
-                      Option C
-                    </Radio>
-                    <Radio style={styles.radioStyle} value={4}>
-                      Option D
-                    </Radio>
-                  </Radio.Group>
+                  <Question
+                    text={this.showTextWithSpecialCharacters(
+                      this.state.question
+                    )}
+                  />
+                  <AnswerOptions
+                    dataLength={this.state.data.length}
+                    onChange={this.radioOnChange}
+                    all_answers={this.state.all_answers}
+                  />
+                  {/* 
+                  <Radio.Group onChange={this.radioOnChange}>
+                    {this.state.all_answers.map((answer, index) => (
+                      <Radio
+                        key={index}
+                        //style={styles.radioStyle}
+                        value={answer}>
+                        {this.showTextWithSpecialCharacters(answer)}
+                      </Radio>
+                    ))}
+                  </Radio.Group> */}
                 </Card.Body>
                 <Card.Footer>
                   <button onClick={this.handleClick}>Next</button>
@@ -146,7 +146,7 @@ class Home extends Component {
           )}
         </p>
         <button onClick={this.handleClick}>Next</button>
-        <button onClick={this.handleAnswers}>Random Answers</button> */}
+        <button onClick={this.handleAnswers}>Random Answers</button>*/}
       </React.Fragment>
     );
   }

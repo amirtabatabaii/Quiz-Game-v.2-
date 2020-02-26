@@ -5,7 +5,8 @@ class Badge extends Component {
     return (
       <span className={this.props.className}>
         {this.props.label}
-        {this.props.content} {this.props.continueLabel}
+        {this.props.content}
+        {this.props.continueLabel}
       </span>
     );
   }
