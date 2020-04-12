@@ -40,11 +40,6 @@ class Home extends Component {
         incorrect_answers: nextProps.data[nextProps.index].incorrect_answers,
         index: nextProps.index,
         all_answers: nextProps.all_answers,
-        // nextProps.randomanswer(
-        //   this.state.correct_answer,
-        //   this.state.incorrect_answers,
-        //   this.state.all_answers
-        // ),
         score: nextProps.score
       });
     }
@@ -102,40 +97,6 @@ class Home extends Component {
             </div>
           </div>
         </div>
-
-        {/* <p>
-          Data {this.state.index + 1} :
-          {this.state.data.length > 0 ? (
-            <div>
-              Category: {this.state.category}
-              <br />
-              Difficulty:
-              {this.state.difficulty}
-              <br /> Question:
-              {this.showTextWithSpecialCharacters(this.state.question)}
-              <br />
-              Correct Answer:
-              {this.showTextWithSpecialCharacters(this.state.correct_answer)}
-              <br />
-              Incorrect Answer:
-              {this.state.incorrect_answers.map(incorrect => (
-                <p>{this.showTextWithSpecialCharacters(incorrect)} </p>
-              ))}
-              <br />
-              All Answers:
-              {this.state.all_answers.map(answer => (
-                <p>{this.showTextWithSpecialCharacters(answer)} </p>
-              ))}
-            </div>
-          ) : (
-            <div>
-              <Spinner animation='grow' variant='primary' />
-              <Spinner animation='border' variant='primary' />
-            </div>
-          )}
-        </p>
-        <button onClick={this.handleClick}>Next</button>
-        <button onClick={this.handleAnswers}>Random Answers</button>*/}
       </React.Fragment>
     );
   }
